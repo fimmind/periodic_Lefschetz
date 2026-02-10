@@ -1,0 +1,117 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage[bottom]{footmisc}
+
+\usepackage[
+    colorlinks=true,
+    allcolors=black,
+    urlcolor=blue,
+]{hyperref}
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Утверждение}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{example}[theorem]{Пример}
+
+\begin{document}
+
+\section{Вклад конической точки в формуле Лефшеца в терминах преобразования Фурье-Лапласа}
+
+\subsection{Общие определения}
+
+Рассмотрим некомпактное многообразие \({ \hat{M} }\), составленное из компактного основания \({ M }\) с границей \({ \Omega }\) и присоединённого к нему бесконечного цилиндра \({ [0, +\infty) \times \Omega }\). Ему соответствует многообразие \({ \mathcal M }\) с конической точкой \({ \alpha }\). Пусть \[
+    D : H^{s}(\hat{M}) \to H^{s - m}(\hat{M}) \]
+--- дифференциальный оператор порядка \({ m }\), совпадающий на \({ [0, +\infty) \times \Omega }\) с \({ 2\pi }\)-периодическим оператором \({ D_{\infty} \coloneqq D_{\infty}(-i \partial_{t}, \omega, -i \partial_{\omega}) }\), \[
+    D_{\infty} : H^{s}(\mathbb R_{t} \times \Omega) \to H^{s-m}(\mathbb R_{t} \times \Omega)\,.
+\]
+
+При сопряжении \({ D_{\infty} }\) с преобразованием Фурье мы получаем, фактически, конормальный символ оператора \({ D }\): \[
+    \sigma_{c}(D)(p) = \mathcal F D_{\infty} \mathcal F^{-1} = D_{\infty}(p, \omega, -i \partial_{\omega})\,, \quad p \in \mathbb C\,.
+\] В контексте перспективы обобщения формулы Лефшеца на случай не цилиндрических, а периодических концов, нам удобно рассмотреть вместо преобразования Фурье преобразование Фурье-Лапласа: \[
+    \begin{gathered}
+        \mathcal F_{z} : L^2(\mathbb R_{t} \times \Omega) \to L^2(\mathbb S^{1}_{t} \times \mathbb S^{1}_{z} \times \Omega)\,, \\
+        \left( \mathcal F_{z}u \right)(t, z) \coloneqq z^{\frac{t}{2\pi}} \sum_{n} z^{n} u(t + 2\pi n)\,.
+    \end{gathered}
+\] Обратное преобразование тогда задаётся формулой \[
+    u(t) = \frac{1}{2\pi i} \oint_{\lvert z \rvert = 1} z^{-\frac{t}{2\pi}} \left( \mathcal F_{z}u \right)(t, z) \frac{dz}{z}\,.
+\] При этом преобразовании оператор \({ D_{\infty} }\) переходит в семейство операторов \[
+    \begin{gathered}
+        \widetilde D_{\infty}(\theta) \coloneqq \mathcal F_{z} D_{\infty} \mathcal F_{z}^{-1} = D_{\infty}(-i \partial_{t} - \frac{\theta}{2\pi}, \omega, -i \partial_{\omega})\,, \\
+        \widetilde D_{\infty}(\theta) : H^{s}(\mathbb S^{1}_{t} \times \Omega) \to H^{s-m}(\mathbb S^{1}_{t} \times \Omega)\,,
+    \end{gathered}
+\] где для удобства \({ z \coloneqq e^{i\theta} }\), \({ \theta \in [0, 2\pi] }\).
+
+\begin{definition}
+    Оператор \({ D }\) называется эллиптическим, если 
+    \begin{enumerate}
+        \item \({ \sigma(D) }\) обратим на \({ T^{*}\hat{M} }\) вне нулевого сечения;
+        \item \({ \widetilde D_{\infty}(\theta) }\) обратим для любого \({ \theta \in [0, 2\pi] }\).
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Если \({ D }\) --- эллиптический, то он фредгольмов.
+\end{theorem}
+    
+В дальнейшем нам так же понадобится понятие следа оператора (в смысле сужения его на некоторое подмногообразие.) Пусть \[
+    \begin{gathered}
+        i : \Omega \hookrightarrow \mathbb R \times \Omega\,, \\
+        A : C^{\infty}(\mathbb R \times \Omega) \to C^{\infty}(\mathbb R \times \Omega)\,.
+    \end{gathered}
+\]
+
+\begin{definition}
+    Следом оператора \({ A }\) на \({ \Omega }\) называется композиция \[
+        \tau(A) : C^{\infty}(\Omega) \overset{i_*}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{A}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{i^{*}}{\longrightarrow} C^{\infty}(\Omega)\,,
+    \] где \[
+    \begin{gathered}
+        i_*(u)(t, \omega) = \delta(t) u(\omega)\,, \\
+        i^{*}(u)(\omega) = u(0, \omega)\,.
+    \end{gathered}
+    \]
+\end{definition}
+
+\subsection{Вклад конической точки \({ \alpha }\) в формуле Лефшеца}
+
+Рассмотрим комплекс из одного эллиптического оператора 
+\begin{equation}
+    \label{eq:the_complex}
+    0 \to H^{s}(\hat{M}) \overset{D}{\longrightarrow} H^{s-m}(\hat{M}) \to 0\,.
+\end{equation} 
+Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ g : \hat{M} \to \hat{M} }\), совпадающим на \({ \mathbb R \times \Omega }\) с отображением сдвига вдоль \({ \mathbb R }\) на некоторое число \({ \lambda \neq 0 }\).
+
+Обозначим за \({ B }\) псевдодифференциальный оператор с конормальным символом \[
+    \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
+\] Тогда вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается по формулой \[
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, \sigma_{c}(B)(p)\: dp\,,
+\] где интеграл понимается в смысле его регуляризации \[
+    \int_{-\infty}^{+\infty} \left( \frac{-1}{i \lambda} \right)^{l} \sigma_{c}(T_1)(p) \, \frac{\partial \sigma_{c}(B)}{\partial p}(p)\: dp
+\] для достаточно большого \({ l }\).
+
+\begin{lemma}
+    \begin{multline*}
+        \int_{-\infty}^{+\infty} \left( \frac{-1}{i \lambda} \right)^{l} \sigma_{c}(T_1)(p) \ \frac{\partial \sigma_{c}(B)}{\partial p}(p)\: dp \\ 
+        = \left( - \frac{2\pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( g \, e^{-i \frac{\lambda\theta}{2\pi}} \, \widetilde D_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,.
+    \end{multline*}
+\end{lemma}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\end{document}
