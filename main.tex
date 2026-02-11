@@ -52,10 +52,10 @@
 \] Нам удобно рассмотреть вместо преобразования Фурье преобразование Фурье-Лапласа: \[
     \begin{gathered}
         \mathcal F_{z} : L^2(\mathbb R_{t} \times \Omega) \to L^2(\mathbb S^{1}_{t} \times \mathbb S^{1}_{z} \times \Omega)\,, \\
-        \left( \mathcal F_{z}u \right)(t, z) \coloneqq z^{\frac{t}{2\pi}} \sum_{n} z^{n} u(t + 2\pi n)\,.
+        \left( \mathcal F_{z}u \right)(t, z, \omega) \coloneqq z^{\frac{t}{2\pi}} \sum_{n} z^{n} u(t + 2\pi n, \omega)\,.
     \end{gathered}
 \] Обратное преобразование тогда задаётся формулой \[
-    u(t) = \frac{1}{2\pi i} \oint_{\lvert z \rvert = 1} z^{-\frac{t}{2\pi}} \left( \mathcal F_{z}u \right)(t, z) \frac{dz}{z}\,.
+    u(t, \omega) = \frac{1}{2\pi i} \oint_{\lvert z \rvert = 1} z^{-\frac{t}{2\pi}} (\mathcal F_{z}u)(t, z, \omega)\: \frac{dz}{z}\,.
 \] При этом преобразовании оператор \({ D_{\infty} }\) переходит в семейство операторов \[
     \begin{gathered}
         \widetilde D_{\infty}(\theta) \coloneqq \mathcal F_{z} D_{\infty} \mathcal F_{z}^{-1} = D_{\infty}(-i \partial_{t} - \frac{\theta}{2\pi}, \omega, -i \partial_{\omega})\,, \\
@@ -102,7 +102,7 @@
     \label{eq:the_complex}
     0 \to H^{s}(\hat{M}) \overset{D}{\longrightarrow} H^{s-m}(\hat{M}) \to 0\,.
 \end{equation} 
-Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ g : \hat{M} \to \hat{M} }\), совпадающим на \({ \mathbb R \times \Omega }\) с отображением сдвига вдоль \({ \mathbb R }\) на некоторое число \({ \lambda \neq 0 }\).
+Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- геометрический эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ \hat{M} \to \hat{M} }\), совпадающим на \({ [0, +\infty) \times \Omega }\) с отображением \({ g : \mathbb R_{t} \times \Omega \to \mathbb R_{t} \times \Omega }\) сдвига по переменной \({ t }\) на некоторое число \({ \lambda \neq 0 }\).
 
 Обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с символом \[
     \sigma(D)^{-1}(p) \frac{\partial \sigma(D)}{\partial p}(p)\,.
@@ -146,7 +146,7 @@
 Таким образом, если положить \({ \widetilde T_1(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\), то вклад в формуле Лефшеца принимает вид 
 \begin{equation}
     \label{eq:new_requilarized_contribution}
-    L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
+    \mathcal L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
 \end{equation}
 поскольку
 \[
