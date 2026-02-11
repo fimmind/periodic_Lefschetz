@@ -5,6 +5,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 
+\usepackage[backend=biber, doi=false,isbn=false]{biblatex}
+\addbibresource{references.bib}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -42,7 +47,7 @@
 
 При сопряжении \({ D_{\infty} }\) с преобразованием Фурье мы получаем, фактически, конормальный символ оператора \({ D }\): \[
     \sigma_{c}(D)(p) = \mathcal F D_{\infty} \mathcal F^{-1} = D_{\infty}(p, \omega, -i \partial_{\omega})\,, \quad p \in \mathbb C\,.
-\] В контексте перспективы обобщения формулы Лефшеца на случай не цилиндрических, а периодических концов, нам удобно рассмотреть вместо преобразования Фурье преобразование Фурье-Лапласа: \[
+\] Нам удобно рассмотреть вместо преобразования Фурье преобразование Фурье-Лапласа: \[
     \begin{gathered}
         \mathcal F_{z} : L^2(\mathbb R_{t} \times \Omega) \to L^2(\mathbb S^{1}_{t} \times \mathbb S^{1}_{z} \times \Omega)\,, \\
         \left( \mathcal F_{z}u \right)(t, z) \coloneqq z^{\frac{t}{2\pi}} \sum_{n} z^{n} u(t + 2\pi n)\,.
@@ -64,11 +69,13 @@
     \end{enumerate}
 \end{definition}
 
+Из \cite[Теорема 2]{рабинович1982алгебре} следует
+
 \begin{theorem}
     Если \({ D }\) --- эллиптический, то он фредгольмов.
 \end{theorem}
     
-В дальнейшем нам так же понадобится понятие следа оператора (в смысле сужения его на некоторое подмногообразие.) Пусть \[
+В дальнейшем нам так же понадобится понятие следа оператора в смысле сужения его на некоторое подмногообразие (см. \cite{новиков1966следы}.) Пусть \[
     \begin{gathered}
         i : \Omega \hookrightarrow \mathbb R \times \Omega\,, \\
         A : C^{\infty}(\mathbb R \times \Omega) \to C^{\infty}(\mathbb R \times \Omega)\,.
@@ -80,7 +87,7 @@
         \tau(A) : C^{\infty}(\Omega) \overset{i_*}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{A}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{i^{*}}{\longrightarrow} C^{\infty}(\Omega)\,,
     \] где \[
     \begin{gathered}
-        i_*(u)(t, \omega) = \delta(t) u(\omega)\,, \\
+        i_*(u)(t, \omega) = u(\omega) \delta(t)\,, \\
         i^{*}(u)(\omega) = u(0, \omega)\,.
     \end{gathered}
     \]
@@ -95,23 +102,61 @@
 \end{equation} 
 Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ g : \hat{M} \to \hat{M} }\), совпадающим на \({ \mathbb R \times \Omega }\) с отображением сдвига вдоль \({ \mathbb R }\) на некоторое число \({ \lambda \neq 0 }\).
 
-Обозначим за \({ B }\) псевдодифференциальный оператор с конормальным символом \[
-    \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
-\] Тогда вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается по формулой \[
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, \sigma_{c}(B)(p)\: dp\,,
+Обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с символом \[
+    \sigma(D)^{-1}(p) \frac{\partial \sigma(D)}{\partial p}(p)\,.
+\] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается по формулой \[
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, B_{\infty}(p)\: dp\,,
 \] где интеграл понимается в смысле его регуляризации \[
-    \int_{-\infty}^{+\infty} \left( \frac{-1}{i \lambda} \right)^{l} \sigma_{c}(T_1)(p) \, \frac{\partial \sigma_{c}(B)}{\partial p}(p)\: dp
+    \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \, B_{\infty}^{(l)}(p)\: dp
 \] для достаточно большого \({ l }\).
 
 \begin{lemma}
-    \begin{multline*}
-        \int_{-\infty}^{+\infty} \left( \frac{-1}{i \lambda} \right)^{l} \sigma_{c}(T_1)(p) \ \frac{\partial \sigma_{c}(B)}{\partial p}(p)\: dp \\ 
-        = \left( - \frac{2\pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( g \, e^{-i \frac{\lambda\theta}{2\pi}} \, \widetilde D_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,.
+    Имеем, что \begin{multline*}
+        \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \  B_{\infty}^{(l)}(p)\: dp \\ 
+        = -\left( \frac{-1}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,.
     \end{multline*}
 \end{lemma}
 
 \begin{proof}
-    TODO
+    Подставляя разложение \({ \delta(t) = \frac{1}{2\pi} \sum_{l} e^{ilt} }\) в определение следа по Новикову получаем 
+    \begin{multline*}
+        \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) u(\omega) 
+        \\
+        \begin{aligned}
+            &= \left[ e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) u(\omega) \delta(t) \right]_{t=0} \\
+            &= \left[ \frac{1}{2\pi} e^{-i \frac{\lambda \theta}{2 \pi}} \sum_{l} B_{\infty}^{(l)}\left( l - \frac{\theta}{2\pi} \right) u(\omega) e^{il(t + \lambda)} \right]_{t = 0} \\
+            &= \left[ \frac{1}{2\pi} \sum_{l} e^{i (l \lambda - \frac{\lambda \theta}{2 \pi})} B_{\infty}^{(l)} \left( l - \frac{\theta}{2\pi} \right) \right] u(\omega)\,,
+        \end{aligned}
+    \end{multline*}
+    то есть \[
+        \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right)
+        = \frac{1}{2\pi} \sum_{l} e^{i \lambda (l - \frac{\theta}{2 \pi})} B_{\infty}^{(l)} \left( l - \frac{\theta}{2\pi} \right)\,.
+    \]
+    Отсюда
+    \begin{multline*}
+        \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta \\
+        = \frac{1}{2 \pi} \int_{0}^{2\pi} \sum_{l} e^{i \lambda (l - \frac{\theta}{2 \pi})} B_{\infty}^{(l)} \left( l - \frac{\theta}{2\pi} \right)\: d\theta 
+        = -\int_{-\infty}^{+\infty} e^{i \lambda p} B_{\infty}^{(l)} (p)\: dp\,.
+    \end{multline*}
+    Остаётся заметить, что \({ \sigma_{c}(T_{1}) = e^{i \lambda p} }\).
 \end{proof}
+
+Таким образом, если положить \({ \widetilde T_1(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\), то вклад в формуле Лефшеца принимает вид 
+\begin{equation}
+    \label{eq:new_requilarized_contribution}
+    L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
+\end{equation}
+поскольку
+\[
+    \widetilde B_{\infty}^{(l)}(\theta) 
+    = \frac{\partial^{l}}{\partial \theta^{l}} \left( B_{\infty}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right)
+    = \left( \frac{-1}{2\pi} \right)^{l} B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right)\,.
+\]
+
+На выражение (\ref{eq:new_requilarized_contribution}) можно смотреть как на равенство \[
+    \mathcal L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \int_{0}^{2\pi} \tau \left( \widetilde T_{1}(\theta) \, \widetilde B_{\infty}(\theta) \right)\: d\theta\,,
+\] понимаемое в определённом регуляризованном смысле.
+
+\printbibliography
 
 \end{document}
