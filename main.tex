@@ -49,7 +49,7 @@
 
 При сопряжении \({ D_{\infty} }\) с преобразованием Фурье мы получаем, фактически, конормальный символ оператора \({ D }\): \[
     \sigma_{c}(D)(p) = \mathcal F D_{\infty} \mathcal F^{-1} = D_{\infty}(p, \omega, -i \partial_{\omega})\,, \quad p \in \mathbb C\,.
-\] Нам удобно рассмотреть вместо преобразования Фурье преобразование Фурье-Лапласа: \[
+\] Нам удобно вместо преобразования Фурье рассмотреть преобразование Фурье-Лапласа (см. \cite{taubes1987gauge} и \cite{mrowka2016index}): \[
     \begin{gathered}
         \mathcal F_{z} : L^2(\mathbb R_{t} \times \Omega) \to L^2(\mathbb S^{1}_{t} \times \mathbb S^{1}_{z} \times \Omega)\,, \\
         \left( \mathcal F_{z}u \right)(t, z, \omega) \coloneqq z^{\frac{t}{2\pi}} \sum_{n} z^{n} u(t + 2\pi n, \omega)\,.
@@ -106,7 +106,7 @@
 
 Обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с конормальным символом \[
     \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
-    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic}, вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается формулой \[
+    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается формулой \[
     \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, B_{\infty}(p)\: dp\,,
 \] где интеграл понимается в смысле его регуляризации \[
     \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \, B_{\infty}^{(l)}(p)\: dp
