@@ -116,7 +116,7 @@
     Имеем, что 
     \begin{multline*}
         \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \  B_{\infty}^{(l)}(p)\: dp \\ 
-        = -\left( \frac{-1}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,,
+        = \left( \frac{-1}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,,
     \end{multline*}
     где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb S^{1}_{t} \times \Omega }\).
 \end{lemma}
@@ -140,7 +140,7 @@
     \begin{multline*}
         \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta \\
         = \frac{1}{2 \pi} \int_{0}^{2\pi} \sum_{k} e^{i \lambda (k - \frac{\theta}{2 \pi})} B_{\infty}^{(l)} \left( k - \frac{\theta}{2\pi} \right)\: d\theta 
-        = -\int_{-\infty}^{+\infty} e^{i \lambda p} B_{\infty}^{(l)} (p)\: dp\,.
+        = \int_{-\infty}^{+\infty} e^{i \lambda p} B_{\infty}^{(l)} (p)\: dp\,.
     \end{multline*}
     Остаётся заметить, что \({ \sigma_{c}(T_{1}) = e^{i \lambda p} }\).
 \end{proof}
@@ -148,7 +148,7 @@
 Таким образом, если положить \({ \widetilde T_1(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\), то вклад в формуле Лефшеца принимает вид 
 \begin{equation}
     \label{eq:new_requilarized_contribution}
-    \mathcal L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
 \end{equation}
 поскольку
 \[
@@ -158,10 +158,10 @@
 \]
 
 На выражение (\ref{eq:new_requilarized_contribution}) можно смотреть как на равенство \[
-    \mathcal L_{\operatorname{sing}} = \frac{-1}{2\pi i} \operatorname{Trace} \int_{0}^{2\pi} \tau \left( \widetilde T_{1}(\theta) \, \widetilde B_{\infty}(\theta) \right)\: d\theta\,,
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \int_{0}^{2\pi} \tau \left( \widetilde T_{1}(\theta) \, \widetilde B_{\infty}(\theta) \right)\: d\theta\,,
 \] понимаемое в определённом регуляризованном смысле.
 Последнюю формулу можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
-    \mathcal L_{\operatorname{sing}} = -\frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
 \] где след \({ \tau }\) отвечает вложению \[
     \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \quad \omega \mapsto (0, \omega)\,.
 \]
