@@ -32,6 +32,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Определение}
 \newtheorem{example}[theorem]{Пример}
+\newtheorem{remark}[theorem]{Замечание}
 
 \begin{document}
 
@@ -104,9 +105,16 @@
 \end{equation} 
 Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- геометрический эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ \hat{M} \to \hat{M} }\), совпадающим на \({ [0, +\infty) \times \Omega }\) с отображением \({ g : \mathbb R_{t} \times \Omega \to \mathbb R_{t} \times \Omega }\) сдвига по переменной \({ t }\) на некоторое число \({ \lambda \neq 0 }\).
 
-Обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с конормальным символом \[
+\begin{proposition}
+    \label{prop:conical_contribution}
+    Вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается как \[
+        \mathcal L_{\operatorname{sing}} = i \operatorname{Trace} \int_{0}^{2\pi} \tau\left( \widetilde T_{1}(\theta) \widetilde D_{\infty} ^{-1}(\theta) \frac{\partial \widetilde D_{\infty}}{\partial \theta} (\theta) \right)\: d\theta\,,
+    \] где \({ \widetilde T_{1}(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\).
+\end{proposition}
+
+Для доказательства обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с конормальным символом \[
     \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
-    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается формулой \[
+    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), \[
     \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, B_{\infty}(p)\: dp\,,
 \] где интеграл понимается в смысле его регуляризации \[
     \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \, B_{\infty}^{(l)}(p)\: dp
@@ -148,23 +156,33 @@
 Таким образом, если положить \({ \widetilde T_1(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\), то вклад в формуле Лефшеца принимает вид 
 \begin{equation}
     \label{eq:new_requilarized_contribution}
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \, \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
+    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
 \end{equation}
-поскольку
-\[
+поскольку \[
     \widetilde B_{\infty}^{(l)}(\theta) 
     = \frac{\partial^{l}}{\partial \theta^{l}} \left( B_{\infty}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right)
     = \left( \frac{-1}{2\pi} \right)^{l} B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right)\,.
-\]
-
-На выражение (\ref{eq:new_requilarized_contribution}) можно смотреть как на равенство \[
+\] Наконец, интегрируя по частям в выражении (\ref{eq:new_requilarized_contribution}), получаем \[
     \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \int_{0}^{2\pi} \tau \left( \widetilde T_{1}(\theta) \, \widetilde B_{\infty}(\theta) \right)\: d\theta\,,
-\] понимаемое в определённом регуляризованном смысле.
-Последнюю формулу можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
-\] где след \({ \tau }\) отвечает вложению \[
-    \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \quad \omega \mapsto (0, \omega)\,.
-\]
+\] что есть в точности равенство из Утверждения~(\ref{prop:conical_contribution}), поскольку \[
+    \widetilde B_{\infty}(\theta) = -2\pi \widetilde D_{\infty} ^{-1}(\theta) \frac{\partial \widetilde D_{\infty}}{\partial \theta} (\theta)\,.
+\] 
+
+\begin{remark}
+    Последнюю формулу можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
+        \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
+    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\).
+\end{remark}
+
+\begin{remark}
+    Можно так же рассматривать и более общие диффеоморфизмы вида \[
+        \begin{gathered}
+            g : (t, \omega) \mapsto (t + \lambda(\omega), g_{\alpha}(\omega))\,,  \\
+            \lambda : \Omega \to \mathbb R \setminus \left\{ 0 \right\}\,, \quad 
+            g_{\alpha} : \Omega \to \Omega\,.
+        \end{gathered}
+    \] Утверждение~(\ref{prop:conical_contribution}) в таком случае остаётся в точности тем же, просто \({ \lambda }\) в выражении для \({ \widetilde T_1(\theta) }\) будет зависеть от \({ \omega }\).
+\end{remark}
 
 \printbibliography
 
