@@ -114,9 +114,12 @@
 
 Для доказательства обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с конормальным символом \[
     \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
-    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), \[
+    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), 
+\begin{equation}
+    \label{eq:original_contribution}
     \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, B_{\infty}(p)\: dp\,,
-\] где интеграл понимается в смысле его регуляризации \[
+\end{equation}
+где интеграл понимается в смысле его регуляризации \[
     \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \, B_{\infty}^{(l)}(p)\: dp
 \] для достаточно большого \({ l }\).
 
@@ -169,9 +172,21 @@
 \] 
 
 \begin{remark}
-    Последнюю формулу можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
+    Вклад можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
         \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
-    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\).
+    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\). Это следует непосредственно из формулы (\ref{eq:original_contribution}) и соотношения \[
+        \tau(D_{\infty}) = \int_{\mathbb R} \sigma_{c}(D)\: dp\,,
+    \] непосредственно вытекающего из определений\footnote{По определению \({ \tau(D_{\infty}) u(\omega) = \left[ D_{\infty} \delta(t) u(\omega) \right]_{t = 0}^{}  }\).
+       \[
+           \begin{aligned}
+               (D_{\infty} \delta(t)u(\omega), \varphi(t, \omega)) 
+               &= \left(\mathcal F_{p \to t}^{-1} \sigma_{c}(D) \mathcal F_{t \to p} \delta(t) u(\omega), \varphi(t, \omega)\right) \\
+               &= \left(\delta(t)u(\omega), \mathcal F_{p \to t} \sigma_{c}(D) \mathcal F_{t \to p}^{-1} \varphi(t, \omega)\right) \\
+               &= u(\omega) \int_{\mathbb R} \varphi(\tau, \omega) \int_{\mathbb R} e^{i p \tau} \sigma_{c}(D)\: dp\: d\tau \\
+               &= \left(\mathcal F_{p \to \tau}^{-1} \sigma_{c}(D) u(\omega), \varphi(\tau, \omega)\right)\,.
+           \end{aligned}
+        \] Отсюда \({ \tau(D_{\infty}) = \mathcal F_{p \to t}^{-1} \sigma_{c}(D) \Big |_{t = 0}^{} = \int_{\mathbb R} \sigma_{c}(D)\: dp }\).
+    }.
 \end{remark}
 
 \begin{remark}
