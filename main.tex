@@ -174,7 +174,7 @@
 \begin{remark}
     Вклад можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
         \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
-    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\). Это следует непосредственно из формулы (\ref{eq:original_contribution}) и соотношения \[
+    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\). Это следует из формулы (\ref{eq:original_contribution}) и соотношения \[
         \tau(D_{\infty}) = \int_{\mathbb R} \sigma_{c}(D)\: dp\,,
     \] непосредственно вытекающего из определений\footnote{По определению \({ \tau(D_{\infty}) u(\omega) = \left[ D_{\infty} \delta(t) u(\omega) \right]_{t = 0}^{}  }\).
        \[
@@ -197,6 +197,52 @@
             g_{\alpha} : \Omega \to \Omega\,.
         \end{gathered}
     \] Утверждение~(\ref{prop:conical_contribution}) в таком случае остаётся в точности тем же, просто \({ \lambda }\) в выражении для \({ \widetilde T_1(\theta) }\) будет зависеть от \({ \omega }\).
+\end{remark}
+
+\subsection{Переложение на периодические многообразия}
+
+Пусть \({ \mathcal M }\) --- риманово многообразие с периодическим концом, отвечающим бесконечному циклическому накрытию \({ M }\) компактного многообразия \({ M_{\infty} }\), ассоциированному с классом когомологий \({ \gamma \in (M_{\infty}; \mathbb Z) }\), двойственным (по Пуанкаре) ориентированному гладкому подмногообразию \({ Y }\). Тогда \({ \mathcal M }\) состоит из компактного основания \({ M_{0} }\) с границей \({ Y }\) и хвоста \({ M^{+} }\), представляющего из себя <<половину>> \({ M }\), отрезанную по поднятию \({ Y }\) (см. \cite{mrowka2015index}.) 
+
+При этом \({ M }\) можно представить как склейку по отображениям \({ Y^{-} \to Y^{+} }\) счётного числа фундаментальных областей \({ W_{k} }\), изометрически изоморфных \({ M_{\infty} \setminus Y }\) и с двумя берегами разреза \({ Y^{\pm} }\).
+Бесконечная циклическая группа \({ \Pi \coloneqq \langle t \rangle }\) свободно действует на \({ M }\). Для \({ k \in \mathbb Z_{+} }\) обозначим \[
+    M^{+}_{k} \coloneqq t^{k} M^{+} \subseteq M^{+} \subseteq \mathcal M\,.
+\]
+
+Легко построить гладкую функцию \({ f : M \to \mathbb R }\) такую, что \begin{equation}
+    \label{eq:quasi-periodicity_of_f}
+    f(tx) = f(x) + 1\,.
+\end{equation} Достаточно положить \({ f }\) гладкой ступенькой в односторонней трубчатой окрестности части границы \({ Y^{+} }\) в \({ W_{0} }\), продолжить \({ f }\) нулём в \({ W_{0} }\) и определить соотношением (\ref{eq:quasi-periodicity_of_f}) на всём \({ M }\). При этом \({ df }\) корректно определено на \({ M_{\infty} }\).
+
+Пусть \({ g : \mathcal M \to \mathcal M }\) есть диффеоморфизм, для достаточно большого \({ N }\) совпадающий на \({ M^{+}_{N} }\) с некоторым \({ g^{\infty} : M \to M }\), коммутирующим с действием \({ \mathbb Z }\) и таким, что \({ g(M^{+}_{N}) \subseteq M^{+} }\). (Возможно, для большей общности вместо периодичности можно требовать что-то вроде существования равномерного предела \({ \lim_{k \to \infty} t^{-k} g t^{k} (x) }\).) Тогда \({ g^{\infty} }\) индуцирует отображение \({ g_{\infty} : M_{\infty} \to M_{\infty} }\).
+
+\begin{remark}
+    Не умаляя общности считаем, что все неподвижные точки \({ g_{\infty} }\) суть проекции неподвижных точек \({ g^{\infty} }\). В противном случае можно вместо \({ M_{\infty} = M / \langle t \rangle }\) взять \({ M / \langle t^{k + 1} \rangle }\) для наибольшего по модулю \({ k \in \mathbb Z }\) такого, что \({ g(t^{k} x) = x }\) для некоторого \({ x \neq g(x) }\).
+\end{remark}
+
+\begin{theorem}
+    Пусть \({ g }\) имеет только невырожденные неподвижные точки, а \({ g_{\infty} }\) не имеет неподвижных точек. Тогда число Лефшеца \({ 
+        \mathcal L = \mathcal L_{\operatorname{int}} + \mathcal L_{\operatorname{sing}} 
+    }\) где \({ \mathcal L_{\operatorname{int}} }\) есть сумма классических вкладов неподвижных точек \({ g }\), лежащих внутри \({ \mathcal M \setminus M^{+}_{N} }\), а \[
+        \mathcal L_{\operatorname{sing}} = i \operatorname{Trace}_{M_{\infty}} \int_{0}^{2 \pi} T_{1}(\theta) D^{^{-1}}_{\infty}(\theta) \frac{\partial D_{\infty}}{\partial \theta}(\theta) d\theta\,.
+    \]
+\end{theorem}
+
+Рассмотрим случай, когда \({ g^{\infty} }\) имеет (невырожденные) неподвижные точки. Пусть \({ \left\{ x_{j} \right\} }\) --- неподвижные точки \({ g_{\infty} }\) (тоже невырожденные в силу замечания) и пусть \({ x_{j} }\) лежат вне разреза \({ Y }\). Пусть \({ \omega }\) --- поток (в смысле \cite{de2012differentiable}), для которого \[
+    d \omega = \sum_{x_{j}} \mathcal L_{x_{j}} \delta_{x_{j}}\: dVol\,,
+\] где \({ \mathcal L_{x_{j}} }\) есть вклад точки \({ x_{j} }\), а \({ \delta_{x_{j}} }\) --- \({ \delta }\)-функция, сосредоточенная в точке \({ x_{j} }\). Тогда, по аналогии с \cite[Theorem A]{mrowka2016index}, формула для числа Лефшеца, вероятно, принимает вид \[
+    \mathcal L = \mathcal L_{\operatorname{int}} + \mathcal L' + \mathcal L_{\operatorname{sing}}\,,
+\] где \[
+    \mathcal L' = -\int_{Y} \omega + \int_{M_{\infty}} df \land \omega\,.
+\]
+
+\begin{remark}
+    \({ \mathcal L' }\) не зависит от выбора \({ \omega }\), поскольку для \({ d\omega = d(\omega + \omega') }\) в силу формулы интегрирования по частям и определения функции \({ f }\) имеем \[
+        \int_{M_{\infty}} df \land \omega' - \int_{Y} \omega' = -\int_{M_{\infty}} f \land \underbrace{d\omega'}_{0} + \int_{Y} (\underbrace{ft - f}_{1}) \omega' - \int_{Y} \omega' = 0\,.
+    \]
+\end{remark}
+
+\begin{remark}
+    Из формулы Стокса следует, что если при построении \({ \mathcal M }\) вместо \({ Y }\) взять какой-то другой разрез \({ \widetilde Y }\), то к \({ \mathcal L' }\) прибавляется сумма вкладов неподвижных точек, заключённых между \({ Y }\) и \({ \widetilde Y }\).
 \end{remark}
 
 \printbibliography
