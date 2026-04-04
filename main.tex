@@ -221,6 +221,7 @@
 Ожидается, что справедлива следующая
 
 \begin{theorem}
+    \label{thm:preiodic_singular_contribution}
     Пусть \({ g }\) имеет только невырожденные неподвижные точки, а \({ g^{\infty} }\) не имеет неподвижных точек. Тогда число Лефшеца \({ 
         \mathcal L = \mathcal L_{\operatorname{int}} + \mathcal L_{\operatorname{sing}} 
     }\) где \({ \mathcal L_{\operatorname{int}} }\) есть сумма классических вкладов неподвижных точек \({ g }\), лежащих внутри \({ \mathcal M \setminus M^{+}_{N} }\), а 
@@ -253,8 +254,255 @@
 \end{remark}
 
 \begin{remark}
-    Из формулы Стокса (если она справедлива для потоков) следует, что если при построении \({ \mathcal M }\) вместо \({ Y }\) взять какой-то другой разрез \({ \widetilde Y }\), то к \({ \mathcal L' }\) прибавляются с соответствующими знаками вклады неподвижных точек, заключённых между \({ Y }\) и \({ \widetilde Y }\). Это компенсирует ``лишние'' вклады, добавляющиеся при этом в \({ \mathcal L_{\operatorname{int}} }\).
+    Из формулы Стокса (если она справедлива для потоков) следует, что если при построении \({ M }\) вместо \({ Y }\) взять какой-то другой разрез \({ \widetilde Y }\), то к \({ \mathcal L' }\) прибавляются с соответствующими знаками вклады неподвижных точек, заключённых между \({ Y }\) и \({ \widetilde Y }\). Это компенсирует ``лишние'' вклады, добавляющиеся при этом в \({ \mathcal L_{\operatorname{int}} }\).
 \end{remark}
+
+\subsection{Вклад особых точек в случае комплекса де~Рама}
+
+Пусть, снова, \({ \mathcal M }\) --- риманово многообразие размерности \({ n }\) с периодическим концом, отвечающим бесконечному циклическому накрытию \({ M }\) компактного многообразия \({ M_{\infty} }\). Тогда \({ \mathcal M }\) состоит из компактного основания \({ M_0 }\) с границей \({ Y }\) и хвоста \({ M^{+} }\).
+
+По аналогии с \cite{mrowka2015index}, для $\delta \in \mathbb R$ обозначим через $\Omega_{\delta}^q(\mathcal M)$ пополнение пространства гладких финитных $q$-форм на $\mathcal M$ по норме, совпадающей на периодическом конце с
+\[
+    \|\alpha\|_{L^2_{\delta}}^2 \coloneqq \int_{M^{+}} e^{\delta f(x)} |\alpha(x)|^2\, dx\,.
+\]
+Соответствующий \emph{взвешенный комплекс де~Рама} имеет вид
+\begin{equation}
+    \label{eq:weighted_de_rham_complex}
+    0 \to \Omega_{\delta}^0(\mathcal M)
+    \overset{d}{\longrightarrow} \Omega_{\delta}^1(\mathcal M)
+    \overset{d}{\longrightarrow} \cdots
+    \overset{d}{\longrightarrow} \Omega_{\delta}^n(\mathcal M)
+    \to 0\,.
+\end{equation}
+Его гомологии будут обозначаться \({ H^{*}_{d}(\mathcal M) }\).
+
+\begin{definition}
+    Если комплекс~\eqref{eq:weighted_de_rham_complex} фредгольмов, то его \emph{взвешенным числом Лефшеца} относительно геометрического эндоморфизма, индуцированного отображением $g$, называется величина
+    \[
+        \mathcal L^{\operatorname{dR}}_{\delta}(g)
+        \coloneqq
+        \sum_{q=0}^{n} (-1)^q
+        \operatorname{Tr}\bigl(
+            g^* \colon H^q_{\delta}(\mathcal M) \to H^q_{\delta}(\mathcal M)
+        \bigr).
+    \]
+\end{definition}
+
+\begin{lemma}
+    \label{lem:twisted_de_rham_differential}
+    Преобразование Фурье--Лапласа на периодическом конце переводит оператор $d$ в
+    \begin{equation}
+        \label{eq:twisted_differential}
+        d_z \coloneqq \mathcal F_{z} d \mathcal F_{z}^{-1} = d - (\ln z)\, df \wedge \cdot\,.
+    \end{equation}
+\end{lemma}
+
+Для применения Теоремы~\ref{thm:preiodic_singular_contribution} к комплексу~\eqref{eq:weighted_de_rham_complex}
+будем рассматривать его \(2\)-периодизацию \[
+    \Omega^{\operatorname{ev}}_{\delta}(M)
+    \overset{D}{\longrightarrow}
+    \Omega^{\operatorname{odd}}_{\delta}(M)
+    \overset{D}{\longrightarrow}
+    \Omega^{\operatorname{ev}}_{\delta}(M),
+    \qquad
+    D = d + d^*,
+\] где \(d^*\) есть формально сопряжённый к \(d\).
+После преобразования Фурье--Лапласа на периодическом
+конце получаем семейство операторов Ходжа--де~Рама
+\[
+    D_z := d_z + d_z^* .
+\]
+Из эллиптической теории Ходжа известно, что \(D_z\) обратим тогда и только тогда, когда
+\(H_z^*(M_\infty)=0\).
+
+\begin{definition}
+    \label{def:exceptional_set}
+    \emph{Исключительным множеством} комплекса де~Рама на периодическом конце назовём множество
+    \[
+        \Sigma
+        \coloneqq
+        \left\{ z \in \mathbb C^* : H^{*}_z(M_{\infty}) \neq 0 \right\},
+    \]
+    где $H^{*}_z(M_{\infty})$ обозначает когомологии комплекса $(\Omega^{*}(M_{\infty}), d_z)$.
+\end{definition}
+
+\begin{proposition}
+    \label{prop:fredholm_criterion_derham}
+    Комплекс~\eqref{eq:weighted_de_rham_complex} является фредгольмовым тогда и только тогда, когда окружность $C_{\delta}$ не пересекает множество $\Sigma$. В частности, исключительные веса образуют конечное множество значений $\delta = \ln |z_0|$, где $z_0 \in \Sigma$.
+\end{proposition}
+
+\begin{proof}
+    Это есть переформулировка основного критерия фредгольмовости из~\cite{mrowka2015index}.
+\end{proof}
+
+\begin{definition}
+    Пространство \[
+        \mathcal H^{*}_{z} = \bigl\{ \xi\in H^*(M;\mathbb C) \mid \exists k \geqslant 1 : (t^*-z)^k\xi = 0 \bigr\}
+    \] называется обобщённым спектральным блоком, отвечающим спектральному значению \({ z }\).
+\end{definition}
+
+Поскольку \({ g_{\infty} }\) коммутирует с оператором сдвига \({ t }\), то индуцированное отображение \({ g_{\infty}^{*} }\) сохраняет корневые подпространства оператора \({ t^{*} }\). Поэтому, имеют место корректно определённые индуцированные отображения \[
+    g^{*}_{\infty} : \mathcal H^{*}_{z} \to \mathcal H^{*}_{z}\,.
+\]
+
+\begin{definition}
+    \label{def:spectral_lefschetz_contribution}
+    Для $z \in \Sigma$ определим \emph{спектральный вклад на бесконечности} отображения \({ g_{\infty} }\) формулой
+    \[
+        \Lambda_z(g_{\infty}) \coloneqq \sum_{q=0}^{n} (-1)^q \operatorname{Tr}\bigl( g_{\infty}^* \colon \mathcal H^q_z \to \mathcal H^q_z \bigr)\,,
+    \]
+\end{definition}
+
+Особую роль играет точка $z = 1$, отвечающая обычному комплексу де~Рама на компактном многообразии $M_{\infty}$.
+
+\begin{lemma}
+    \label{lem:evaluating_the_residue}
+    Для каждого \(z_0 \in \Sigma\) дифференциальная форма
+    \[
+        \operatorname{Str}\!\left(
+            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+        \right)\,dz
+    \]
+    мероморфна в окрестности точки \(z_0\), и её вычет в этой точке равен
+    спектральному вкладу \(\Lambda_{z_0}(g_\infty)\).
+\end{lemma}
+
+\begin{proof}
+    Поскольку \(D_z\) есть эллиптическое семейство фредгольмовых операторов на
+    компактном многообразии \(M_\infty\), оператор-функция \(D_z^{-1}\) мероморфна
+    вне точек множества \(\Sigma\), а её сингулярная часть в окрестности \(z_0\)
+    определяется конечномерной редукцией на спектральном блоке \(\mathcal H^*_{z_0}\).
+
+    Иначе говоря, на \(\mathcal H^*_{z_0}\) оператор, индуцированный сдвигом, имеет вид
+    \[
+        t^*|_{H^*_{z_0}} = z_0 \operatorname{Id} + \mathcal N,
+    \]
+    где \(\mathcal N\) --- нильпотентный оператор, причём \(g_\infty^*\) коммутирует
+    с \(\mathcal N\), так как \(g_\infty\) коммутирует со сдвигом.
+    Следовательно, если положить \(\zeta = z-z_0\), то существует голоморфная в окрестности \(z_0\) функция \(h(z)\)
+    такая, что
+    \[
+        \operatorname{Str}\!\left(
+            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+        \right)
+        =
+        \operatorname{Str}\!\left(
+            g_\infty^*(\zeta-\mathcal N)^{-1}
+        \right)
+        + h(z).
+    \]
+
+    Если \(\mathcal N^\ell=0\), то
+    \[
+        (\zeta-\mathcal N)^{-1}
+        =
+        \zeta^{-1}\sum_{k=0}^{\ell-1}\left(\frac{\mathcal N}{\zeta}\right)^k,
+    \]
+    и потому коэффициент при \(\zeta^{-1}\) в ряде Лорана
+    \((\zeta-\mathcal N)^{-1}\) равен \(\operatorname{Id}\). Следовательно,
+    \[
+        \operatorname*{Res}_{z=z_0}
+        \operatorname{Str}\!\left(
+            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+        \right)\,dz
+        =
+        \operatorname{Str}\!\left(
+            g_\infty^* : \mathcal H^*_{z_0}\to \mathcal H^*_{z_0}
+        \right).
+    \]
+    По определению спектрального вклада правая часть равна \[
+        \sum_{q=0}^n (-1)^q
+        \operatorname{Tr}\bigl(
+            g_\infty^* : \mathcal H^q_{z_0}\to \mathcal H^q_{z_0}
+        \bigr)
+        =
+        \Lambda_{z_0}(g_\infty)\,,
+    \] что и требовалось.
+\end{proof}
+
+\begin{theorem}
+    \label{thm:periodic_de_rham_formula}
+    Предположим, что отображение $g$ имеет только невырожденные неподвижные точки, а \({ g_{\infty} }\) не имеет неподвижных точек. Пусть также $\delta \in \mathbb R$ выбрано так, что комплекс~\eqref{eq:weighted_de_rham_complex} фредгольмов. Тогда
+    \begin{equation}
+        \label{eq:weighted_periodic_lefschetz_formula}
+        \mathcal L^{\operatorname{dR}}_{\delta}(g)
+        =
+        \mathcal L_{\operatorname{int}}
+        +
+        \sum_{\substack{z_0 \in \Sigma \\ |z_0| < e^{\delta}}}
+        \Lambda_{z_0}(g_{\infty})\,.
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    По Лемме~\ref{lem:twisted_de_rham_differential} после преобразования Фурье--Лапласа оператор \(d\) на периодическом
+    конце переходит в семейство
+    \[
+        d_z = d - (\ln z)\, df \wedge \cdot
+    \]
+    на \(M_\infty\), где \(z \in C_\delta=\{|z|=e^\delta\}\). Соответствующий
+    оператор Ходжа--де~Рама для \(2\)-периодизации имеет вид
+    \[
+        D_z = d_z + d_z^* .
+    \]
+    Поэтому формулу~\eqref{eq:L_sing} для вклада бесконечности можно переписать в виде
+    \begin{equation}
+        \label{eq:de_rham_sing_hodge}
+        L_{\operatorname{sing}}
+        =
+        \frac{1}{2\pi i}
+        \int_{C_\delta}
+        \operatorname{Str}\!\left(
+            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+        \right)\,dz .
+    \end{equation}
+
+    По Утверждению~\ref{prop:fredholm_criterion_derham} оператор \(D_z\) обратим для всех \(z \notin \Sigma\), так что
+    подынтегральная \(1\)-форма в~\eqref{eq:de_rham_sing_hodge} мероморфна на
+    \(\mathbb C^*\), и её полюса лежат ровно в точках множества \(\Sigma\).
+    Следовательно, по теореме о вычетах и по Лемме~\ref{lem:evaluating_the_residue}
+    \[
+        L_{\operatorname{sing}}
+        =
+        \sum_{\substack{z_0\in\Sigma\\ |z_0|<e^\delta}}
+        \operatorname*{Res}_{z=z_0}
+        \operatorname{Str}\!\left(
+            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+        \right)\,dz
+        =
+        \sum_{\substack{z_0\in\Sigma\\ |z_0|<e^\delta}}
+        \Lambda_{z_0}(g_\infty)\,.
+    \] Теорема доказана.
+\end{proof}
+
+\begin{example}
+    Пусть $Y$ --- компактное гладкое многообразие, $\mathcal M = \mathbb R \times Y$, а
+    \[
+        g_{\lambda}(t,y) = (t+\lambda,y), \qquad \lambda \neq 0.
+    \]
+    Рассмотрим $\mathcal M$ как многообразие с двумя периодическими концами $\mathcal M_{+} = [0,+\infty)\times Y$ и $\mathcal M_{-}=(-\infty,0]\times Y$, при этом отрицательному концу соответствует вес \({ -\delta }\), а положительному --- вес \({ \delta }\).
+    Действие \({ g }\) на \({ H_{*}(\widetilde M_{\infty};\mathbb C)\cong H_{*}(Y;\mathbb C) }\) тривиально, так что исключительное множество состоит лишь из одной точки \({ z = 1 }\), причём соответствующий локальный блок имеет вид обычных когомологий $H^{*}(Y;\mathbb C)$. Тогда
+    \[
+        \mathcal L^{\operatorname{dR}}_{+,\delta}(g_{\lambda})
+        =
+        \sum_{\substack{z_0\in\Sigma\\ |z_0|<e^{\delta}}}
+        \Lambda_{z_0}(g_{\infty})
+        = \begin{cases}
+            0\,, & \delta < 0\,, \\
+            \Lambda_{1}(g_{\infty})\,, & \delta > 0\,,
+        \end{cases}
+    \] где \({ \Lambda_{1}(g_{\infty}) = \chi(Y) }\), поскольку в данном случае \({ \mathcal H_{1}^{*} = H^{*}(M; \mathbb C) \cong H^{*}(Y; \mathbb C) }\).
+    Вклад \({ \mathcal L^{\operatorname{dR}}_{-, \delta}(g_{\lambda}) }\) вычисляется аналогично: \[
+        \mathcal L^{\operatorname{dR}}_{-,\delta}(g_{\lambda})
+        =
+        \begin{cases}
+            \chi(Y), & \delta<0,\\
+            0, & \delta>0\,.
+        \end{cases}
+    \]
+
+    При этом, в данном случае \({ \mathcal L^{\operatorname{dR}}_{\delta}(g) }\) равно эйлеровой характеристике взвешенного комплекса, и полученные формулы соответствуют результатам, полученным в \cite[Example 4.1]{mrowka2015index}.
+\end{example}
 
 \printbibliography
 
