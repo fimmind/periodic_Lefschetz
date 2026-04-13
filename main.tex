@@ -276,18 +276,6 @@
 \end{equation}
 Его гомологии будут обозначаться \({ H^{*}_{\delta}(\mathcal M) }\).
 
-\begin{definition}
-    Если комплекс~\eqref{eq:weighted_de_rham_complex} фредгольмов, то его \emph{взвешенным числом Лефшеца} относительно геометрического эндоморфизма, индуцированного отображением $g$, называется величина
-    \[
-        \mathcal L^{\operatorname{dR}}_{\delta}(g)
-        \coloneqq
-        \sum_{q=0}^{n} (-1)^q
-        \operatorname{Tr}\bigl(
-            g^* \colon H^q_{\delta}(\mathcal M) \to H^q_{\delta}(\mathcal M)
-        \bigr).
-    \]
-\end{definition}
-
 \begin{lemma}
     \label{lem:twisted_de_rham_differential}
     Преобразование Фурье--Лапласа на периодическом конце переводит оператор $d$ в
@@ -328,7 +316,21 @@
     Следует из~\cite[Proof of Theorem 1.1]{mrowka2015index}.
 \end{proof}
 
-\subsubsection{Мотивация}
+Из \cite[Propositions 2.2 \& 2.4]{mrowka2015index} следует, что для того, чтобы комплекс (\ref{eq:weighted_de_rham_complex}) был фредгольмовым хотя бы при одном значении \({ \delta }\), необходимо и достаточно, чтобы гомологии \({ H_*(M; \mathbb C) }\) были конечномерными. Оттуда же \cite[Propoistion 2.2]{mrowka2015index} следует, что если \({ \Sigma }\) непусто, то дискретно.
+
+\begin{definition}
+    Если комплекс~\eqref{eq:weighted_de_rham_complex} фредгольмов, то его \emph{взвешенным числом Лефшеца} относительно геометрического эндоморфизма, индуцированного отображением $g$, называется величина
+    \[
+        \mathcal L^{\operatorname{dR}}_{\delta}(g)
+        \coloneqq
+        \sum_{q=0}^{n} (-1)^q
+        \operatorname{Tr}\bigl(
+            g^* \colon H^q_{\delta}(\mathcal M) \to H^q_{\delta}(\mathcal M)
+        \bigr).
+    \]
+\end{definition}
+
+\subsubsection{Мотивация для формулы}
 
 В простейшем случае, когда \({ g }\) индуцирует тождественные отображения в когомологиях \({ H^{*}_{\delta}(\mathcal M) }\), его число Лефшеца равно в точности индексу \({ \operatorname{ind}_{\sigma}(\mathcal M) }\) комплекса~(\ref{eq:weighted_de_rham_complex}).
 
@@ -347,9 +349,9 @@
 \subsubsection{Гипотетическая формула}
 
 \begin{definition}
-    Для любого \({ z \in \mathbb C }\) пространство \[
-        \mathcal H_{*}^{z}M = \bigl\{ \xi\in H_*(M;\mathbb C) \mid \exists k \geqslant 1 : (t_*-z)^k\xi = 0 \bigr\}
-    \] назовём спектральным блоком, отвечающим \({ z }\).
+    Корневое подпространство пространство оператора \[
+        t_* : H_{*}(M; \mathbb C) \to H_{*}(M; \mathbb C)\,,
+    \] отвечающее \({ z \in \mathbb C }\), будем называть спектральным блоком и обозначать \({ \mathcal H_{*}^{z}M }\).
 \end{definition}
 
 Поскольку \({ g_{\infty} }\) коммутирует с оператором сдвига \({ t }\), то индуцированное отображение \({ g_{\infty, *} }\) сохраняет корневые подпространства оператора \({ t_{*} }\). Поэтому, имеют место корректно определённые индуцированные отображения \[
@@ -409,74 +411,5 @@
 \end{remark}
 
 \printbibliography
-
-\iffalse
-\clearpage
-
-\section{Доказательство от ИИ}
-
-\begin{lemma}
-    \label{lem:evaluating_the_residue}
-    Для каждого \(z_0 \in \Sigma\) функция
-    \[
-        \operatorname{Tr}\!\left( g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z} \right)
-    \]
-    мероморфна в окрестности точки \(z_0\), и её вычет в этой точке равен
-    спектральному вкладу \(\Lambda_{z_0}(g_\infty)\).
-\end{lemma}
-
-\begin{proof}
-    Поскольку \(D_z\) есть эллиптическое семейство фредгольмовых операторов на
-    компактном многообразии \(M_\infty\), оператор-функция \(D_z^{-1}\) мероморфна
-    вне точек множества \(\Sigma\), а её сингулярная часть в окрестности \(z_0\)
-    определяется конечномерной редукцией на спектральном блоке \(\mathcal H^*_{z_0}(M)\).
-
-    Иначе говоря, на \(\mathcal H^*_{z_0}(M)\) оператор, индуцированный сдвигом, имеет вид
-    \[
-        t^*|_{H^*_{z_0}} = z_0 \operatorname{Id} + \mathcal N,
-    \]
-    где \(\mathcal N\) --- нильпотентный оператор, причём \(g_\infty^*\) коммутирует
-    с \(\mathcal N\), так как \(g_\infty\) коммутирует со сдвигом.
-    Следовательно, если положить \(\zeta = z-z_0\), то существует голоморфная в окрестности \(z_0\) функция \(h(z)\)
-    такая, что
-    \[
-        \operatorname{Tr}\!\left(
-            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
-        \right)
-        =
-        \operatorname{Tr}\!\left(
-            g_\infty^*(\zeta-\mathcal N)^{-1}
-        \right)
-        + h(z).
-    \]
-
-    Если \(\mathcal N^\ell=0\), то
-    \[
-        (\zeta-\mathcal N)^{-1}
-        =
-        \zeta^{-1}\sum_{k=0}^{\ell-1}\left(\frac{\mathcal N}{\zeta}\right)^k,
-    \]
-    и потому коэффициент при \(\zeta^{-1}\) в ряде Лорана
-    \((\zeta-\mathcal N)^{-1}\) равен \(\operatorname{Id}\). Следовательно,
-    \[
-        \operatorname*{Res}_{z=z_0}
-        \operatorname{Tr}\!\left(
-            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
-        \right)\,dz
-        =
-        \operatorname{Tr}\!\left(
-            g_\infty^* : \mathcal H^*_{z_0}(M)\to \mathcal H^*_{z_0}(M)
-        \right).
-    \]
-    По определению спектрального вклада правая часть равна \[
-        \sum_{q=0}^n (-1)^q
-        \operatorname{Tr}\bigl(
-            g_\infty^* : \mathcal H^q_{z_0}(M)\to \mathcal H^q_{z_0}(M)
-        \bigr)
-        =
-        \Lambda_{z_0}(g_\infty)\,,
-    \] что и требовалось.
-\end{proof}
-\fi
 
 \end{document}
