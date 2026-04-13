@@ -286,7 +286,7 @@
 \end{lemma}
 
 Получаем ``скрученный'' комплекс \[
-    \cdots \to \Omega^{k}(M_{\infty}) \xrightarrow{d - \ln z\: df \land} \omega^{k+1}(M_{\infty}) \to \cdots\,,
+    \cdots \to \Omega^{k}(M_{\infty}) \xrightarrow{d - \ln z\: df \land} \Omega^{k+1}(M_{\infty}) \to \cdots\,,
 \] чьи когомологии (с коэффициентами в комплексном одномерном расслоении с плоской связностью \({ -\ln z\: df \land }\)) будут обозначаться \({ H_{z}^{*}(M_{\infty}) }\).
 
 \begin{definition}
@@ -309,7 +309,7 @@
 
 \begin{proposition}
     \label{prop:explicit_description_of_the_critical_set}
-    Множество \({ \Sigma }\) есть в точности множество собственных значений оператора \({ t_{*} : H_{*}(\widetilde X; \mathbb C) \to H_{*}(\widetilde X; \mathbb C) }\).
+    Множество \({ \Sigma }\) есть в точности множество собственных значений оператора \({ t_{*} : H_{*}(M; \mathbb C) \to H_{*}(M; \mathbb C) }\).
 \end{proposition}
 
 \begin{proof}
@@ -332,11 +332,11 @@
 
 \subsubsection{Мотивация для формулы}
 
-В простейшем случае, когда \({ g }\) индуцирует тождественные отображения в когомологиях \({ H^{*}_{\delta}(\mathcal M) }\), его число Лефшеца равно в точности индексу \({ \operatorname{ind}_{\sigma}(\mathcal M) }\) комплекса~(\ref{eq:weighted_de_rham_complex}).
+В простейшем случае, когда \({ g }\) индуцирует тождественные отображения в когомологиях \({ H^{*}_{\delta}(\mathcal M) }\), его число Лефшеца равно в точности индексу \({ \operatorname{ind}_{\delta}(\mathcal M) }\) комплекса~(\ref{eq:weighted_de_rham_complex}).
 
 \begin{theorem}
     \({ \operatorname{ind}_{\delta}(\mathcal M) }\) есть кусочно-постоянная функция от \({ \delta }\), скачки которой имеют место при \({ \delta = \ln \lvert \lambda \rvert }\), где \({ \lambda \in \Sigma }\). Для каждого \({ k = 0, \ldots, n-1 }\) каждое такое \({ \lambda }\) даёт вклад в скачёк в размере \({ (-1)^{k+1} }\), умноженного на его кратность как корня характеристического многочлена оператора \[
-        t_{*} : H_{k}(\widetilde X; \mathbb C) \to H_{k}(\widetilde X; \mathbb C)\,.
+        t_{*} : H_{k}(M; \mathbb C) \to H_{k}(M; \mathbb C)\,.
     \]
 \end{theorem}
 
@@ -355,14 +355,14 @@
 \end{definition}
 
 Поскольку \({ g_{\infty} }\) коммутирует с оператором сдвига \({ t }\), то индуцированное отображение \({ g_{\infty, *} }\) сохраняет корневые подпространства оператора \({ t_{*} }\). Поэтому, имеют место корректно определённые индуцированные отображения \[
-    g^{\infty, *} : \mathcal H_{*}^{z}M \to \mathcal H_{*}^{z}M\,.
+    g_{\infty, *} : \mathcal H_{*}^{z}M \to \mathcal H_{*}^{z}M\,.
 \]
 
 \begin{definition}
     \label{def:spectral_lefschetz_contribution}
     Для $z \in \Sigma$ определим \emph{спектральный вклад на бесконечности} отображения \({ g_{\infty} }\) формулой
     \[
-        \Lambda_z(g_{\infty}) \coloneqq \sum_{k=0}^{n} (-1)^{k+1} \operatorname{Tr}\bigl( g_{\infty}^* \colon \mathcal H^k_z(M) \to \mathcal H^k_z(M) \bigr)\,.
+        \Lambda_z(g_{\infty}) \coloneqq \sum_{k=0}^{n} (-1)^{k+1} \operatorname{Tr}\bigl( g_{\infty,*} \colon \mathcal H^k_z(M) \to \mathcal H^k_z(M) \bigr)\,.
     \]
 \end{definition}
 
@@ -392,7 +392,7 @@
     \[
         D_z := d_z + d_z^*\,.
     \]
-    При этом \(D_z\) обратим тогда и только тогда, когда \(H_z^*(M_\infty)=0\), что эквивалентно \({ z \in \Sigma }\).
+    При этом \(D_z\) обратим тогда и только тогда, когда \(H_z^*(M_\infty)=0\), что эквивалентно \({ z \not \in \Sigma }\).
 
     Формулу~\eqref{eq:L_sing} для вклада бесконечности после замены \({ z = e^{\delta + i \theta} }\), предположительно, можно переписать в виде
     \begin{equation}
