@@ -200,6 +200,7 @@
 \end{remark}
 
 \subsection{Вклад бесконечности для многообразий с периодическими концами}
+\label{sub:periodic_ends_contribution}
 
 Пусть \({ \mathcal M }\) --- риманово многообразие размерности \({ n }\) с периодическим концом, отвечающим бесконечному циклическому накрытию \({ M }\) компактного многообразия \({ M_{\infty} }\), ассоциированному с классом когомологий \({ \gamma \in H^{1}(M_{\infty}; \mathbb Z) }\), двойственным (по Пуанкаре) ориентированному гладкому подмногообразию \({ Y }\) коразмерности \({ 1 }\). Тогда \({ \mathcal M }\) состоит из компактного основания \({ M_{0} }\) с границей \({ Y }\) и хвоста \({ M^{+} }\), представляющего из себя <<половину>> \({ M }\), отрезанную по \({ Y }\) (см. \cite{mrowka2015index}.) 
 
@@ -227,7 +228,7 @@
     }\) где \({ \mathcal L_{\operatorname{int}} }\) есть сумма классических вкладов неподвижных точек \({ g }\), лежащих внутри \({ \mathcal M \setminus M^{+}_{N} }\), а 
     \begin{equation}
         \label{eq:L_sing}
-        \mathcal L_{\operatorname{sing}} = i \operatorname{Trace}_{M_{\infty}} \int_{0}^{2 \pi} T_{1}(\theta) D^{^{-1}}_{\infty}(\theta) \frac{\partial D_{\infty}}{\partial \theta}(\theta) d\theta\,.
+        \mathcal L_{\operatorname{sing}} = \frac{i}{2\pi} \operatorname{Trace}_{M_{\infty}} \int_{0}^{2 \pi} T_{1}(\theta) D^{^{-1}}_{\infty}(\theta) \frac{\partial D_{\infty}}{\partial \theta}(\theta) d\theta\,.
     \end{equation}
 \end{theorem}
 
@@ -257,11 +258,11 @@
     Из формулы Стокса (если она справедлива для потоков) следует, что если при построении \({ M }\) вместо \({ Y }\) взять какой-то другой разрез \({ \widetilde Y }\), то к \({ \mathcal L' }\) прибавляются с соответствующими знаками вклады неподвижных точек, заключённых между \({ Y }\) и \({ \widetilde Y }\). Это компенсирует ``лишние'' вклады, добавляющиеся при этом в \({ \mathcal L_{\operatorname{int}} }\).
 \end{remark}
 
-\subsection{Вклад особых точек в случае комплекса де~Рама}
+\subsection{Взвешенный комплекс де~Рама}
 
 Пусть, снова, \({ \mathcal M }\) --- риманово многообразие размерности \({ n }\) с периодическим концом, отвечающим бесконечному циклическому накрытию \({ M }\) компактного многообразия \({ M_{\infty} }\). Тогда \({ \mathcal M }\) состоит из компактного основания \({ M_0 }\) с границей \({ Y }\) и хвоста \({ M^{+} }\). Мы будем так же предполагать, что \({ H_{*}(\mathcal M; \mathbb C) }\) конечномерны.
 
-По аналогии с \cite{mrowka2015index}, для $\delta \in \mathbb R$ обозначим через $\Omega_{\delta}^q(\mathcal M)$ пополнение пространства гладких финитных $q$-форм на $\mathcal M$ по норме, совпадающей на периодическом конце с
+По аналогии с \cite{mrowka2015index}, для $\delta \in \mathbb R$ обозначим через $\Omega_{\delta}^q(\mathcal M)$ пополнение пространства гладких финитных $q$-форм на $\mathcal M$ по норме \({ \lVert \,\cdot\, \rVert_{\delta} }\), совпадающей на периодическом конце с
 \[
     \|\alpha\|_{L^2_{\delta}}^2 \coloneqq \int_{M^{+}} e^{\delta f(x)} |\alpha(x)|^2\, dx\,.
 \]
@@ -275,6 +276,8 @@
     \to 0\,.
 \end{equation}
 Его гомологии будут обозначаться \({ H^{*}_{\delta}(\mathcal M) }\).
+
+\subsubsection{Фредгольмомовость комплекса \({ \Omega_{\delta}^{*}(\mathcal M) }\)}
 
 \begin{lemma}
     \label{lem:twisted_de_rham_differential}
@@ -316,7 +319,15 @@
     Следует из~\cite[Proof of Theorem 1.1]{mrowka2015index}.
 \end{proof}
 
-Из \cite[Propositions 2.2 \& 2.4]{mrowka2015index} следует, что для того, чтобы комплекс (\ref{eq:weighted_de_rham_complex}) был фредгольмовым хотя бы при одном значении \({ \delta }\), необходимо и достаточно, чтобы гомологии \({ H_*(M; \mathbb C) }\) были конечномерными. Оттуда же \cite[Propoistion 2.2]{mrowka2015index} следует, что если \({ \Sigma }\) непусто, то дискретно.
+Из \cite[Propositions 2.2 \& 2.4]{mrowka2015index} следует, что для того, чтобы комплекс (\ref{eq:weighted_de_rham_complex}) был фредгольмовым хотя бы при одном значении \({ \delta }\), необходимо и достаточно, чтобы гомологии \({ H_*(M; \mathbb C) }\) были конечномерными. Оттуда же \cite[Propoistion 2.2]{mrowka2015index} следует, что если \({ \Sigma }\) непусто, то оно дискретно.
+
+\subsubsection{Эндоморфизм взвешенного комплекса}
+
+Пусть \({ g : \mathcal M \to \mathcal M }\) --- диффеоморфизм, периодический на концах и удовлетворяющий предположению Замечания~\ref{rm:fixed_points_are_projections}.
+
+Поскольку для него функция \({ f \circ g^{\infty} - f }\) опускается на компактное многообразие \({ M_{\infty} }\), то она ограниченна. Поэтому индуцированное отображение \({ g^{*} : \Omega^{*}(\mathcal M) \to \Omega^{*}(\mathcal M) }\) при любом \({ \delta }\) ограниченна относительно нормы \({ \lVert \,\cdot\, \rVert_{\delta} }\) и потому индуцирует корректное отображение \[
+    g^{*} : \Omega^{*}_{\delta}(\mathcal M) \to \Omega^{*}_{\delta}(\mathcal M)\,.
+\]
 
 \begin{definition}
     Если комплекс~\eqref{eq:weighted_de_rham_complex} фредгольмов, то его \emph{взвешенным числом Лефшеца} относительно геометрического эндоморфизма, индуцированного отображением $g$, называется величина
@@ -329,6 +340,38 @@
         \bigr).
     \]
 \end{definition}
+
+\begin{proposition}
+    Имеем \[
+        g^{*}_{z} \coloneqq \mathcal F_{z} g^{\infty,*} \mathcal F_{z}^{-1} = z^{f(x) - f(g(x))} g_{\infty}^{*}\,.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Для формы $\hat{u}(x,z)$, инвариантной относительно $t^*$, имеем \[
+        \begin{aligned}
+            \mathcal{F}_z g^* \mathcal{F}_z^{-1} \hat{u} (x,z)
+&= z^{f(x)} \sum_{n} z^n \, (\mathcal{F}_z^{-1} \hat{u})(g(t^n x)) \\
+&= z^{f(x)} \sum_{n} z^n \frac{1}{2\pi i} \oint_{|w|=1} w^{-f(g(t^n x))} \hat{u}(g(t^n x), w) \, \frac{dw}{w}\,.
+        \end{aligned}
+    \]
+    При этом \[
+        \begin{gathered}
+            \hat{u}(g(t^{n}x), w) = \hat{u}(t^{n}g(x), w) = \hat{u}(g(x), w)\,, \\
+            f(g(t^{n}x)) = f(g(x)) + n\,.
+        \end{gathered}
+    \]
+    Отсюда \[
+        \begin{aligned}
+            g^{*}_{z} 
+        &= z^{f(x)} \sum_{n} z^n \frac{1}{2\pi i} \oint w^{-f(g(x)) - n} \, \hat{u}(g(x), w) \, \frac{dw}{w} \\
+        &= z^{f(x)} \oint \left[ \frac{1}{2\pi i} \sum \left( z/w \right)^n \right] w^{-f(g(x))} \hat{u}(g(x), w) \,\frac{dw}{w} \\
+        &= z^{f(x)} \oint \delta(z - w) \, w^{-f(g(x))} \hat{u}(g(x), w) \,\frac{dw}{w} \\
+        &= z^{f(x)} z^{-f(g(x))} \hat{u}(g(x), z) \\
+        &= z^{f(x) - f(g(x))} \hat{u}(g(x), z)\,,
+        \end{aligned}
+    \] где \({ \delta }\)-функция действует относительно меры Хаара \({ \frac{dw}{w} }\) на окружности.
+\end{proof}
 
 \subsubsection{Мотивация для формулы}
 
@@ -349,7 +392,7 @@
 \subsubsection{Гипотетическая формула}
 
 \begin{definition}
-    Корневое подпространство пространство оператора \[
+    Корневое подпространство оператора \[
         t_* : H_{*}(M; \mathbb C) \to H_{*}(M; \mathbb C)\,,
     \] отвечающее \({ z \in \mathbb C }\), будем называть спектральным блоком и обозначать \({ \mathcal H_{*}^{z}M }\).
 \end{definition}
@@ -399,16 +442,24 @@
         \label{eq:de_rham_sing_hodge}
         \mathcal L^{\operatorname{dR}}_{\operatorname{sing},\delta} =
         \frac{1}{2\pi i} \int_{C_\delta} \operatorname{Trace} \left(
-            g_\infty^* D_z^{-1}\frac{\partial D_z}{\partial z}
+            g_z^* D_z^{-1}\frac{\partial D_z}{\partial z}
         \right)\,dz\,.
     \end{equation}
 
     Подынтегральная функция мероморфна на \(\mathbb C^*\), и её полюса лежат ровно в точках множества \(\Sigma\). Следовательно, по теореме о вычетах вычисление скачка \({ \mathcal L^{\operatorname{dR}}_{\operatorname{sing},\delta_2} - \mathcal L^{\operatorname{dR}}_{\operatorname{sing},\delta_1} }\) сводится к вычислению вычетов подынтегральной функции в точках множества \({ \Sigma }\), заключённых в соответствующем кольце.
 \end{proof}
 
-\begin{remark}
-    Даже если приведённая теорема верна, для полного описания значений \({ \mathcal L^{\operatorname{dR}}_{\operatorname{sing}, \delta} }\) всё ещё не хватает известного значения \({ \mathcal L^{\operatorname{dR}}_{\operatorname{sing}, \delta} }\) по крайней мере при одном \({ \delta }\), либо же при \({ \delta \to \pm \infty }\).
-\end{remark}
+Даже если приведённая теорема верна, для полного описания значений \({ \mathcal L^{\operatorname{dR}}_{\operatorname{sing}, \delta} }\) всё ещё не хватает известного значения \({ \mathcal L^{\operatorname{dR}}_{\operatorname{sing}, \delta} }\) по крайней мере при одном \({ \delta }\), либо же при \({ \delta \to \pm \infty }\). В некоторых частных случаях его можно найти.
+
+\begin{proposition}
+    Если бесконечность является для \({ g_{\infty} }\) притягивающей в том смысле, что \({ f \circ g > f }\), то \({ \mathcal L_{\operatorname{sing}, \delta}^{\operatorname{dR}}(g) \to 0 }\) при \({ \delta \to +\infty }\). Если бесконечность --- отталкивающая, т.е. \({ f \circ g < f }\), то \({ \mathcal L_{\operatorname{sing}, \delta}^{\operatorname{dR}}(g) \to 0 }\) при \({ \delta \to -\infty }\).
+\end{proposition}
+
+\begin{proof}
+    В формуле (\ref{eq:de_rham_sing_hodge}) внутри члена \({ g^{*}_{z} }\) множитель \[
+        z^{f(x) - f(g(x))} = e^{(\delta + i\theta)(f(x) - f(g(x)))}
+    \] отвечает за экспоненциальное убывание при \({ \delta }\) стремящемся к бесконечности с соответствующим знаком.
+\end{proof}
 
 \printbibliography
 
