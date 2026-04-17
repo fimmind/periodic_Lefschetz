@@ -36,9 +36,9 @@
 
 \begin{document}
 
-\section{Вклад конической точки в формуле Лефшеца в терминах преобразования Фурье-Лапласа}
+\section{Вклад конической точки в формуле Лефшеца}
 
-\subsection{Общие определения}
+\subsection{Общие определения (для цилиндрического случая)}
 
 Рассмотрим некомпактное многообразие \({ \hat{M} }\), составленное из компактного основания \({ M }\) с границей \({ \Omega }\) и присоединённого к нему бесконечного цилиндра \({ [0, +\infty) \times \Omega }\). Ему соответствует многообразие \({ \mathcal M }\) с конической точкой \({ \alpha }\). Рассмотрим на \({ \hat{M} }\) соболевские пространства \({ H^{s}(\hat{M}) \coloneqq H^{s, 0}(\mathcal M) }\). (См. \cite[p. 46, Definition 2.3]{nazaikinskii2005elliptic}.)
 
@@ -77,129 +77,8 @@
 \begin{theorem}
     Если \({ D }\) --- эллиптический, то он фредгольмов.
 \end{theorem}
-    
-В дальнейшем нам так же понадобится понятие следа оператора в смысле сужения его на некоторое подмногообразие (см. \cite{новиков1966следы}.) Пусть \[
-    \begin{gathered}
-        i : \Omega \hookrightarrow \mathbb R \times \Omega\,, \quad i(\omega) = (0, \omega)\,, \\
-        A : C^{\infty}(\mathbb R \times \Omega) \to C^{\infty}(\mathbb R \times \Omega)\,.
-    \end{gathered}
-\]
 
-\begin{definition}
-    Следом оператора \({ A }\) на \({ \Omega }\) называется композиция \[
-        \tau(A) : C^{\infty}(\Omega) \overset{i_*}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{A}{\longrightarrow} \mathcal D'(\mathbb R \times \Omega) \overset{i^{*}}{\longrightarrow} C^{\infty}(\Omega)\,,
-    \] где \[
-    \begin{gathered}
-        (i_*u)(t, \omega) = u(\omega) \delta(t)\,, \\
-        (i^{*}u)(\omega) = u(0, \omega)\,.
-    \end{gathered}
-    \]
-\end{definition}
-
-\subsection{Вклад конической точки \({ \alpha }\) в формуле Лефшеца\\\small(в терминах оператора сужения)}
-
-Рассмотрим комплекс из одного эллиптического оператора 
-\begin{equation}
-    \label{eq:the_complex}
-    0 \to H^{s}(\hat{M}) \overset{D}{\longrightarrow} H^{s-m}(\hat{M}) \to 0\,.
-\end{equation} 
-Пусть \({ T_{j} }\), \({ j = 1, 2 }\), --- геометрический эндоморфизм комплекса (\ref{eq:the_complex}), заданный диффеоморфизмом \({ \hat{M} \to \hat{M} }\), совпадающим на \({ [0, +\infty) \times \Omega }\) с отображением \({ g : \mathbb R_{t} \times \Omega \to \mathbb R_{t} \times \Omega }\) сдвига по переменной \({ t }\) на некоторое число \({ \lambda \neq 0 }\).
-
-\begin{proposition}
-    \label{prop:conical_contribution}
-    Вклад неподвижной точки \({ \alpha }\) в формуле Лефшеца выражается как \[
-        \mathcal L_{\operatorname{sing}} = i \operatorname{Trace} \int_{0}^{2\pi} \tau\left( \widetilde T_{1}(\theta) \widetilde D_{\infty} ^{-1}(\theta) \frac{\partial \widetilde D_{\infty}}{\partial \theta} (\theta) \right)\: d\theta\,,
-    \] где \({ \widetilde T_{1}(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\).
-\end{proposition}
-
-Для доказательства обозначим за \({ B = B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\) псевдодифференциальный оператор с конормальным символом \[
-    \sigma_{c}(D)^{-1}(p) \frac{\partial \sigma_{c}(D)}{\partial p}(p)\,.
-    \] Для краткости будем опускать зависимость от \({ \omega }\) и писать, например, \({ B(-i \partial_{t}) }\) вместо \({ B(-i \partial_{t}, \omega, -i \partial_{\omega}) }\). Тогда, согласно \cite[Theorem 11.3]{nazaikinskii2005elliptic} (см. так же \cite{nazaikinskii1999atiyah}), 
-\begin{equation}
-    \label{eq:original_contribution}
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2 \pi i} \operatorname{Trace} \int\limits_{\mathclap{\mathbb R}} \sigma_{c}(T_1)(p) \, B_{\infty}(p)\: dp\,,
-\end{equation}
-где интеграл понимается в смысле его регуляризации \[
-    \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \, B_{\infty}^{(l)}(p)\: dp
-\] для достаточно большого \({ l }\).
-
-\begin{lemma}
-    Имеем, что 
-    \begin{multline*}
-        \left( \frac{-1}{i \lambda} \right)^{l} \int_{-\infty}^{+\infty} \sigma_{c}(T_1)(p) \,  B_{\infty}^{(l)}(p)\: dp \\ 
-        = \left( \frac{-1}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta\,,
-    \end{multline*}
-    где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb S^{1}_{t} \times \Omega }\).
-\end{lemma}
-
-\begin{proof}
-    Подставляя разложение \({ \delta(t) = \frac{1}{2\pi} \sum_{k} e^{ikt} }\) в определение следа, получаем 
-    \begin{multline*}
-        \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) u(\omega) 
-        \\
-        \begin{aligned}
-            &= \left[ e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) u(\omega) \delta(t) \right]_{t=0} \\
-            &= \left[ \frac{1}{2\pi} e^{-i \frac{\lambda \theta}{2 \pi}} \sum_{k} B_{\infty}^{(l)}\left( k - \frac{\theta}{2\pi} \right) u(\omega) e^{ik(t + \lambda)} \right]_{t = 0} \\
-            &= \left[ \frac{1}{2\pi} \sum_{k} e^{i (k \lambda - \frac{\lambda \theta}{2 \pi})} B_{\infty}^{(l)} \left( k - \frac{\theta}{2\pi} \right) \right] u(\omega)\,,
-        \end{aligned}
-    \end{multline*}
-    то есть \[
-        \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right)
-        = \frac{1}{2\pi} \sum_{k} e^{i \lambda (k - \frac{\theta}{2 \pi})} B_{\infty}^{(l)} \left( k - \frac{\theta}{2\pi} \right)\,.
-    \]
-    Отсюда
-    \begin{multline*}
-        \int_{0}^{2\pi} \tau\left( \, e^{-i \frac{\lambda\theta}{2\pi}} g^{*} \, B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right) d\theta \\
-        = \frac{1}{2 \pi} \int_{0}^{2\pi} \sum_{k} e^{i \lambda (k - \frac{\theta}{2 \pi})} B_{\infty}^{(l)} \left( k - \frac{\theta}{2\pi} \right)\: d\theta 
-        = \int_{-\infty}^{+\infty} e^{i \lambda p} B_{\infty}^{(l)} (p)\: dp\,.
-    \end{multline*}
-    Остаётся заметить, что \({ \sigma_{c}(T_{1}) = e^{i \lambda p} }\).
-\end{proof}
-
-Таким образом, если положить \({ \widetilde T_1(\theta) = e^{-i \frac{\lambda \theta}{2 \pi}} g^{*} }\), то вклад в формуле Лефшеца принимает вид 
-\begin{equation}
-    \label{eq:new_requilarized_contribution}
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \left( \frac{2 \pi}{i \lambda} \right)^{l} \int_{0}^{2\pi} \tau \left( \widetilde T_1(\theta) \widetilde B_{\infty}^{(l)}(\theta) \right)\: d\theta\,,
-\end{equation}
-поскольку \[
-    \widetilde B_{\infty}^{(l)}(\theta) 
-    = \frac{\partial^{l}}{\partial \theta^{l}} \left( B_{\infty}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right) \right)
-    = \left( \frac{-1}{2\pi} \right)^{l} B_{\infty}^{(l)}\left( -i \partial_{t} - \frac{\theta}{2\pi} \right)\,.
-\] Наконец, интегрируя по частям в выражении (\ref{eq:new_requilarized_contribution}), получаем \[
-    \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \int_{0}^{2\pi} \tau \left( \widetilde T_{1}(\theta) \, \widetilde B_{\infty}(\theta) \right)\: d\theta\,,
-\] что есть в точности равенство из Утверждения~(\ref{prop:conical_contribution}), поскольку \[
-    \widetilde B_{\infty}(\theta) = -2\pi \widetilde D_{\infty} ^{-1}(\theta) \frac{\partial \widetilde D_{\infty}}{\partial \theta} (\theta)\,.
-\] 
-
-\begin{remark}
-    Вклад можно так же переписать в терминах цилиндра \({ \mathbb R_{t} \times \Omega }\): \[
-        \mathcal L_{\operatorname{sing}} = \frac{1}{2\pi i} \operatorname{Trace} \tau \left( T_{1\infty} D^{-1}_{\infty} [D_{\infty}, t] \right)\,,
-    \] где след \({ \tau }\) отвечает вложению \({ \Omega \hookrightarrow \mathbb R_{t} \times \Omega\,, \ \omega \mapsto (0, \omega) }\). Это следует из формулы (\ref{eq:original_contribution}) и соотношения \[
-        \tau(D_{\infty}) = \int_{\mathbb R} \sigma_{c}(D)\: dp\,,
-    \] непосредственно вытекающего из определений\footnote{По определению \({ \tau(D_{\infty}) u(\omega) = \left[ D_{\infty} \delta(t) u(\omega) \right]_{t = 0}^{}  }\).
-       \[
-           \begin{aligned}
-               (D_{\infty} \delta(t)u(\omega), \varphi(t, \omega)) 
-               &= \left(\mathcal F_{p \to t}^{-1} \sigma_{c}(D) \mathcal F_{t \to p} \delta(t) u(\omega), \varphi(t, \omega)\right) \\
-               &= \left(\delta(t)u(\omega), \mathcal F_{p \to t} \sigma_{c}(D) \mathcal F_{t \to p}^{-1} \varphi(t, \omega)\right) \\
-               &= u(\omega) \int_{\mathbb R} \varphi(\tau, \omega) \int_{\mathbb R} e^{i p \tau} \sigma_{c}(D)\: dp\: d\tau \\
-               &= \left(\mathcal F_{p \to \tau}^{-1} \sigma_{c}(D) u(\omega), \varphi(\tau, \omega)\right)\,.
-           \end{aligned}
-        \] Отсюда \({ \tau(D_{\infty}) = \mathcal F_{p \to t}^{-1} \sigma_{c}(D) \Big |_{t = 0}^{} = \int_{\mathbb R} \sigma_{c}(D)\: dp }\).
-    }.
-\end{remark}
-
-\begin{remark}
-    Можно так же рассматривать и более общие диффеоморфизмы вида \[
-        \begin{gathered}
-            g : (t, \omega) \mapsto (t + \lambda(\omega), g_{\alpha}(\omega))\,,  \\
-            \lambda : \Omega \to \mathbb R \setminus \left\{ 0 \right\}\,, \quad 
-            g_{\alpha} : \Omega \to \Omega\,.
-        \end{gathered}
-    \] Утверждение~(\ref{prop:conical_contribution}) в таком случае остаётся в точности тем же, просто \({ \lambda }\) в выражении для \({ \widetilde T_1(\theta) }\) будет зависеть от \({ \omega }\).
-\end{remark}
-
-\subsection{Вклад бесконечности для многообразий с периодическими концами}
+\subsection{Вклад бесконечности для периодических концов}
 \label{sub:periodic_ends_contribution}
 
 Пусть \({ \mathcal M }\) --- риманово многообразие размерности \({ n }\) с периодическим концом, отвечающим бесконечному циклическому накрытию \({ M }\) компактного многообразия \({ M_{\infty} }\), ассоциированному с классом когомологий \({ \gamma \in H^{1}(M_{\infty}; \mathbb Z) }\), двойственным (по Пуанкаре) ориентированному гладкому подмногообразию \({ Y }\) коразмерности \({ 1 }\). Тогда \({ \mathcal M }\) состоит из компактного основания \({ M_{0} }\) с границей \({ Y }\) и хвоста \({ M^{+} }\), представляющего из себя <<половину>> \({ M }\), отрезанную по \({ Y }\) (см. \cite{mrowka2015index}.) 
@@ -211,6 +90,14 @@
     \label{eq:quasi-periodicity_of_f}
     f(tx) = f(x) + 1\,.
 \end{equation} Достаточно положить \({ f }\) гладкой ступенькой в односторонней трубчатой окрестности \({ Y^{+} }\) в \({ W_{0} }\), продолжить \({ f }\) нулём в \({ W_{0} }\) и определить соотношением (\ref{eq:quasi-periodicity_of_f}) на всём \({ M }\). При этом \({ df }\) корректно определено на \({ M_{\infty} }\).
+
+Преобразование Фурье-Лапласа в таком случае примет вид \[
+    \begin{gathered}
+        \mathcal F_{z} : L^2(M) \to L^2(M_{\infty} \times \mathbb S^{1}_{z})\,, \\
+        \mathcal F_{z}u(x, z) \coloneqq z^{f(x)} \sum_{n} z^{n} u(t^{n} x)\,, \\
+        u(x) = \oint_{\lvert z \rvert = 1} z^{-f(x)} \mathcal F_{z}u(x, z)\: \frac{dz}{z}\,.
+    \end{gathered}
+\]
 
 Пусть \({ g : \mathcal M \to \mathcal M }\) есть диффеоморфизм, для достаточно большого \({ N }\) совпадающий на \({ M^{+}_{N} }\) с некоторым \({ g^{\infty} : M \to M }\), коммутирующим с действием \({ \mathbb Z }\) и таким, что \({ g(M^{+}_{N}) \subseteq M^{+} }\). (Возможно, для большей общности вместо периодичности можно требовать что-то вроде существования равномерного предела \({ \lim_{k \to \infty} t^{-k} g t^{k} (x) }\).) Тогда \({ g^{\infty} }\) индуцирует отображение \({ g_{\infty} : M_{\infty} \to M_{\infty} }\).
 
