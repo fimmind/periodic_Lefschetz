@@ -95,7 +95,7 @@
     \begin{gathered}
         \mathcal F_{z} : L^2(M) \to L^2(M_{\infty} \times \mathbb S^{1}_{z})\,, \\
         \mathcal F_{z}u(x, z) \coloneqq z^{f(x)} \sum_{n} z^{n} u(t^{n} x)\,, \\
-        u(x) = \oint_{\lvert z \rvert = 1} z^{-f(x)} \mathcal F_{z}u(x, z)\: \frac{dz}{z}\,.
+        \mathcal F_{z}^{-1} \hat{u}(x) = \oint_{\lvert z \rvert = 1} z^{-f(x)} \hat{u}(x, z)\: \frac{dz}{z}\,.
     \end{gathered}
 \]
 
@@ -163,6 +163,13 @@
     \to 0\,.
 \end{equation}
 Его гомологии будут обозначаться \({ H^{*}_{\delta}(\mathcal M) }\).
+С учётом веса, преобразование Фурье-Лапласа принимает вид \[
+    \begin{gathered}
+        \mathcal F_{z} : \Omega_{\delta}^{*}(M) \to \Omega_{\delta}^{*}(M_{\infty} \times C_{\delta})\,, \\
+        \mathcal F_{z}u(x, z) \coloneqq z^{f(x)} \sum_{n} z^{n} u(t^{n} x)\,, \\
+        \mathcal F_{z}^{-1} \hat{u}(x) = \oint_{\lvert z \rvert = e^{\delta}} z^{-f(x)} \hat{u}(x, z)\: \frac{dz}{z}\,,
+    \end{gathered}
+\] где \({ C_{\delta} = \left\{ z \in \mathbb C^{*} : \lvert z \rvert = e^{\delta} \right\} }\).
 
 \subsubsection{Фредгольмомовость комплекса \({ \Omega_{\delta}^{*}(\mathcal M) }\)}
 
@@ -239,7 +246,7 @@
         \begin{aligned}
             \mathcal{F}_z g^* \mathcal{F}_z^{-1} \hat{u} (x,z)
 &= z^{f(x)} \sum_{n} z^n \, (\mathcal{F}_z^{-1} \hat{u})(g(t^n x)) \\
-&= z^{f(x)} \sum_{n} z^n \frac{1}{2\pi i} \oint_{|w|=1} w^{-f(g(t^n x))} \hat{u}(g(t^n x), w) \, \frac{dw}{w}\,.
+&= z^{f(x)} \sum_{n} z^n \oint_{|w|=e^{\delta}} w^{-f(g(t^n x))} \hat{u}(g(t^n x), w) \, \frac{dw}{w}\,.
         \end{aligned}
     \]
     При этом \[
@@ -251,8 +258,8 @@
     Отсюда \[
         \begin{aligned}
             g^{*}_{z} 
-        &= z^{f(x)} \sum_{n} z^n \frac{1}{2\pi i} \oint w^{-f(g(x)) - n} \, \hat{u}(g(x), w) \, \frac{dw}{w} \\
-        &= z^{f(x)} \oint \left[ \frac{1}{2\pi i} \sum \left( z/w \right)^n \right] w^{-f(g(x))} \hat{u}(g(x), w) \,\frac{dw}{w} \\
+        &= z^{f(x)} \sum_{n} z^n \oint w^{-f(g(x)) - n} \, \hat{u}(g(x), w) \, \frac{dw}{w} \\
+        &= z^{f(x)} \oint \left[ \sum \left( z/w \right)^n \right] w^{-f(g(x))} \hat{u}(g(x), w) \,\frac{dw}{w} \\
         &= z^{f(x)} \oint \delta(z - w) \, w^{-f(g(x))} \hat{u}(g(x), w) \,\frac{dw}{w} \\
         &= z^{f(x)} z^{-f(g(x))} \hat{u}(g(x), z) \\
         &= z^{f(x) - f(g(x))} \hat{u}(g(x), z)\,,
